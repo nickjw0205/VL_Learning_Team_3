@@ -1,0 +1,213 @@
+{
+    "Fall": {
+        "Scaffolding Work-1": {
+            "Y-01": "Proper installation of system scaffold catwalk",
+            "N-01": "Improper installation of system scaffold catwalk"
+        },
+        "Scaffolding Work-2": {
+            "Y-02": "Retractable hatch catwalk is closed",
+            "N-02": "Retractable hatch catwalk is open"
+        },
+        "Opening Work-1": {
+            "Y-03": "Proper installation of opening cover",
+            "N-03": "Improper installation of opening cover"
+        },
+        "Opening Work-2": {
+            "Y-04": "Proper installation of safety railing for opening",
+            "N-04": "Improper installation of safety railing for opening"
+        },
+        "External Wall Work-1": {
+            "Y-05": "Proper installation of end section safety railing",
+            "N-05": "Improper installation of end section safety railing"
+        },
+        "External Wall Work-2": {
+            "Y-06": "Proper installation of vertical safety net at end section",
+            "N-06": "Improper installation of vertical safety net at end section"
+        },
+        "Masonry, Plastering, Waterproofing Work-1": {
+            "Y-07": "Proper installation of safety railing on mobile scaffold",
+            "N-07": "Improper installation of safety railing on mobile scaffold"
+        },
+        "Masonry, Plastering, Waterproofing Work-2": {
+            "Y-08": "No temporary ladder installed on mobile scaffold catwalk",
+            "N-08": "Temporary ladder installed on mobile scaffold catwalk"
+        },
+        "Ladder Work-1": {
+            "Y-09": "Proper installation of ladder",
+            "N-09": "Ladder installed on load"
+        },
+        "Ladder Work-2": {
+            "Y-10": "Worker working below the top rung of the ladder",
+            "N-10": "Worker working at the top rung of the ladder"
+        }
+    },
+    "Falling Objects": {
+        "Scaffolding Work-1": {
+            "Y-11": "No falling hazards placed on system scaffold",
+            "N-11": "Falling hazards placed on system scaffold"
+        },
+        "Scaffolding Work-2": {
+            "Y-12": "Work only at the top (or bottom) of the system scaffold",
+            "N-12": "Simultaneous work at top and bottom of the system scaffold"
+        },
+        "External Wall Work-1": {
+            "Y-13": "Proper installation of protective shelf at entrance",
+            "N-13": "Improper installation of protective shelf at entrance"
+        },
+        "External Wall Work-2": {
+            "Y-14": "Proper installation of falling object prevention net",
+            "N-14": "Improper installation of falling object prevention net"
+        },
+        "Formwork-1": {
+            "Y-15": "No loads placed on the edge of the formwork",
+            "N-15": "Loads placed on the edge of the formwork"
+        },
+        "Formwork-2": {
+            "Y-16": "Work only at the top (or bottom) during formwork installation and dismantling",
+            "N-16": "Simultaneous work at top and bottom during formwork installation and dismantling"
+        },
+        "Material Handling-1": {
+            "Y-17": "Proper loading of ladder truck",
+            "N-17": "Abnormal overloading of ladder truck"
+        },
+        "Material Handling-2": {
+            "Y-18": "Signalman deployed during ladder truck work",
+            "N-18": "No signalman deployed during ladder truck work"
+        },
+        "Hoisting Work-1": {
+            "Y-19": "Signalman deployed during mobile crane work",
+            "N-19": "No signalman deployed during mobile crane work"
+        },
+        "Hoisting Work-2": {
+            "Y-20": "Use of metal lifting box during mobile crane work",
+            "N-20": "No use of metal lifting box during mobile crane work"
+        }
+    },
+    "Crushing": {
+        "Pipeline Work-1": {
+            "Y-21": "Signalman deployed during pipeline work",
+            "N-21": "No signalman deployed during pipeline work"
+        },
+        "Pipeline Work-2": {
+            "Y-22": "Signalman deployed during excavator material lifting",
+            "N-22": "No signalman deployed during excavator material lifting"
+        },
+        "Aerial Work Platform-1": {
+            "Y-23": "Compliance with installation height of anti-overrun bar for scissor lift",
+            "N-23": "Non-compliance with installation height of anti-overrun bar for scissor lift"
+        },
+        "Aerial Work Platform-2": {
+            "Y-24": "Workers working outside the hazard radius of scissor lift",
+            "N-24": "Workers working within the hazard radius of scissor lift"
+        },
+        "Material Handling-1": {
+            "Y-25": "Signalman deployed during dump truck work",
+            "N-25": "No signalman deployed during dump truck work"
+        },
+        "Material Handling-2": {
+            "Y-26": "Workers working outside the hazard radius of dump truck",
+            "N-26": "Workers working within the hazard radius of dump truck"
+        },
+        "Earthwork-1": {
+            "Y-27": "Signalman deployed during excavator work",
+            "N-27": "No signalman deployed during excavator work"
+        },
+        "Earthwork-2": {
+            "Y-28": "Workers working outside the horizontal hazard radius of excavator",
+            "N-28": "Workers working within the horizontal hazard radius of excavator"
+        },
+        "Concrete Pouring Work-1": {
+            "Y-29": "Signalman deployed during concrete mixer work",
+            "N-29": "No signalman deployed during concrete mixer work"
+        },
+        "Concrete Pouring Work-2": {
+            "Y-30": "Workers working outside the hazard radius of concrete mixer",
+            "N-30": "Workers working within the hazard radius of concrete mixer"
+        }
+    },
+    "Fire": {
+        "Interior Finishing Work-1": {
+            "Y-31": "Installation of portable fan during interior finishing work",
+            "N-31": "No installation of portable fan during interior finishing work"
+        },
+        "Interior Finishing Work-2": {
+            "Y-32": "No heater installed near interior finishing work",
+            "N-32": "Heater installed near interior finishing work"
+        },
+        "Welding Work-1": {
+            "Y-33": "Fire extinguisher placed next to welding machine",
+            "N-33": "No fire extinguisher placed next to welding machine"
+        },
+        "Welding Work-2": {
+            "Y-34": "Welding work next to non-flammable materials",
+            "N-34": "Welding work next to flammable materials"
+        },
+        "Other Work-1": {
+            "Y-35": "Fire extinguisher placed when heater installed in material storage yard",
+            "N-35": "No fire extinguisher placed when heater installed in material storage yard"
+        },
+        "Other Work-2": {
+            "Y-36": "Fire extinguisher placed when oxygen cutting machine installed in material storage yard",
+            "N-36": "No fire extinguisher placed when oxygen cutting machine installed in material storage yard"
+        },
+        "Other Work-3": {
+            "Y-37": "Fire extinguisher placed outside hazardous materials storage",
+            "N-37": "No fire extinguisher placed outside hazardous materials storage"
+        },
+        "Other Work-4": {
+            "Y-38": "Non-flammable materials placed outside hazardous materials storage",
+            "N-38": "Flammable materials placed outside hazardous materials storage"
+        },
+        "Cutting Work-1": {
+            "Y-39": "Fire extinguisher placed during circular saw work (with spark shield)",
+            "N-39": "No fire extinguisher placed during circular saw work (with spark shield)"
+        },
+        "Cutting Work-2": {
+            "Y-40": "Circular saw work next to non-flammable materials",
+            "N-40": "Circular saw work next to flammable materials"
+        }
+    },
+    "Tipping": {
+        "Concrete Pouring Work-1": {
+            "Y-41": "Installation of support props",
+            "N-41": "Poor installation of support props"
+        },
+        "Concrete Pouring Work-2": {
+            "Y-42": "Installation of formwork support",
+            "N-42": "Poor installation of formwork support"
+        },
+        "Masonry, Plastering, Waterproofing Work-1": {
+            "Y-43": "Proper stacking of materials and tools on scaffold",
+            "N-43": "Stacking materials at the edge of scaffold"
+        },
+        "Masonry, Plastering, Waterproofing Work-2": {
+            "Y-44": "Proper installation of scaffold",
+            "N-44": "Installation of scaffold on top of stacked materials"
+        },
+        "Concrete Pouring Work-3": {
+            "Y-45": "Installation of safety devices for concrete pump truck",
+            "N-45": "Defective safety devices for concrete pump truck"
+        },
+        "Concrete Pouring Work-4": {
+            "Y-46": "Deployment of signalman during concrete pump truck work",
+            "N-46": "No signalman deployed during concrete pump truck work"
+        },
+        "Earthwork-1": {
+            "Y-47": "Installation of safety devices during auger crane work",
+            "N-47": "Defective safety devices during auger crane work"
+        },
+        "Earthwork-2": {
+            "Y-48": "Deployment of signalman during auger crane work",
+            "N-48": "No signalman deployed during auger crane work"
+        },
+        "Freight Transport Work-1": {
+            "Y-49": "Deployment of signalman for forklift operation",
+            "N-49": "No signalman deployed for forklift operation"
+        },
+        "Freight Transport Work-2": {
+            "Y-50": "Loading materials below forklift operator's line of sight",
+            "N-50": "Overloading materials above forklift operator's line of sight"
+        }
+    }
+
+}

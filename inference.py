@@ -15,6 +15,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process images and save classification results.")
     parser.add_argument('--model_path', type=str, required=True, help="Path to the LongCLIP model checkpoint.")
     parser.add_argument('--output_path', type=str, required=True, help="Path to save the output JSON file.")
+    parser.add_argument('--rules_path', type=str, required=True, help="Path to the JSON file containing rules.")
+    parser.add_argument('--image_root', type=str, required=True, help="Root directory containing image files.")
     args = parser.parse_args()
 
     # Load LongCLIP model and preprocess
@@ -23,7 +25,7 @@ if __name__ == "__main__":
 
     # Load rules
     total_original_negative = []
-    with open("/data/jwsuh/construction/Zero-shot_Image_Classification/dataset/construction/description/aihub_rules_pair_en.json", 'r', encoding="UTF-8") as j:
+    with open(args.rules_path, 'r', encoding="UTF-8") as j:
         json_data = json.load(j)
 
     for top_rule in json_data.keys():
@@ -40,13 +42,11 @@ if __name__ == "__main__":
 
     results = []
 
-    image_root = "/data/jwsuh/construction/Zero-shot_Image_Classification/dataset/construction/dataset/Image"
-
     with torch.no_grad():
         # Loop through directories N-01 to N-50
         for i in tqdm(range(1, 51)):
             dir_name = f"N-{i:02}"
-            dir_path = os.path.join(image_root, dir_name)
+            dir_path = os.path.join(args.image_root, dir_name)
 
             if not os.path.isdir(dir_path):
                 continue  # Skip if the directory does not exist

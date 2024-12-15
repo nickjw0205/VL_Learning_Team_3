@@ -417,52 +417,7 @@ class CLIP(nn.Module):
 
     #     return total_loss
 
-    # def forward(self, image, text_long, class_ids, rank):
-    #     # 1. Feature Encoding
-    #     image_features = self.encode_image(image)
-    #     text_features = self.encode_text(text_long, class_ids)
-
-    #     # Normalize features
-    #     image_features = image_features / image_features.norm(dim=1, keepdim=True)
-    #     text_features = text_features / text_features.norm(dim=1, keepdim=True)
-
-    #     # Gather features and class IDs from all GPUs
-    #     # image_features_all = torch.cat(torch.distributed.nn.all_gather(image_features), dim=0)
-    #     # text_features_all = torch.cat(torch.distributed.nn.all_gather(text_features), dim=0)
-    #     # class_ids_all = torch.cat(torch.distributed.nn.all_gather(class_ids), dim=0)
-
-    #     # Combine image and text features
-    #     features_all = torch.cat([image_features, text_features], dim=0)
-    #     labels_all = torch.cat([class_ids, class_ids], dim=0)  # Duplicate labels for both modalities
-
-    #     # 2. Supervised Contrastive Loss
-    #     batch_size = image.size(0)
-
-    #     # Compute similarity matrix (cosine similarity)
-    #     similarity_matrix = torch.matmul(features_all, features_all.T)  # [2*batch_size, 2*batch_size]
-    #     similarity_matrix /= self.temperature  # Scale by temperature
-
-    #     # Masking: Positive samples (same class) and negatives (different classes)
-    #     positive_mask = (labels_all.unsqueeze(1) == labels_all.unsqueeze(0)).float()
-    #     negative_mask = 1.0 - positive_mask
-
-    #     # Avoid self-contrast
-    #     identity_mask = torch.eye(similarity_matrix.size(0), device=features_all.device)
-    #     positive_mask -= identity_mask
-
-    #     # Normalize similarity scores
-    #     exp_similarity = torch.exp(similarity_matrix) * (1.0 - identity_mask)  # Exclude diagonal
-    #     log_prob = similarity_matrix - torch.log(exp_similarity.sum(dim=1, keepdim=True))
-
-    #     # Compute mean log-prob for positive pairs
-    #     positive_log_prob = (positive_mask * log_prob).sum(dim=1) / positive_mask.sum(dim=1)
-    #     loss = -positive_log_prob.mean()
-
-    #     return loss
-    
-    # add tcl loss
-    
-    def forward(self, image, text_long, class_ids, rank, k1=500, k2=1):
+    def forward(self, image, text_long, class_ids, rank):
         # 1. Feature Encoding
         image_features = self.encode_image(image)
         text_features = self.encode_text(text_long, class_ids)
@@ -471,12 +426,16 @@ class CLIP(nn.Module):
         image_features = image_features / image_features.norm(dim=1, keepdim=True)
         text_features = text_features / text_features.norm(dim=1, keepdim=True)
 
+        # Gather features and class IDs from all GPUs
+        # image_features_all = torch.cat(torch.distributed.nn.all_gather(image_features), dim=0)
+        # text_features_all = torch.cat(torch.distributed.nn.all_gather(text_features), dim=0)
+        # class_ids_all = torch.cat(torch.distributed.nn.all_gather(class_ids), dim=0)
+
         # Combine image and text features
         features_all = torch.cat([image_features, text_features], dim=0)
-        features_all = features_all / features_all.norm(dim=1, keepdim=True)
         labels_all = torch.cat([class_ids, class_ids], dim=0)  # Duplicate labels for both modalities
 
-        # 2. Tuned Contrastive Learning (TCL) Loss
+        # 2. Supervised Contrastive Loss
         batch_size = image.size(0)
 
         # Compute similarity matrix (cosine similarity)
@@ -495,24 +454,12 @@ class CLIP(nn.Module):
         exp_similarity = torch.exp(similarity_matrix) * (1.0 - identity_mask)  # Exclude diagonal
         log_prob = similarity_matrix - torch.log(exp_similarity.sum(dim=1, keepdim=True))
 
-        # Compute the gradients for positive and negative pairs separately
-        pos_grad = positive_mask * log_prob
-        neg_grad = negative_mask * log_prob
-
-        # Adjust gradients using k1 and k2
-        pos_grad_adjusted = pos_grad * k1
-        neg_grad_adjusted = neg_grad * k2
-
-        # Final loss: weighted sum of positive and negative contributions
-        positive_log_prob = (pos_grad_adjusted.sum(dim=1) / positive_mask.sum(dim=1)).mean()
-        negative_log_prob = (neg_grad_adjusted.sum(dim=1) / negative_mask.sum(dim=1)).mean()
-
-        loss = -(positive_log_prob - negative_log_prob)
+        # Compute mean log-prob for positive pairs
+        positive_log_prob = (positive_mask * log_prob).sum(dim=1) / positive_mask.sum(dim=1)
+        loss = -positive_log_prob.mean()
 
         return loss
-
-
-
+    
 def convert_weights(model: nn.Module):
     """Convert applicable model parameters to fp16"""
 
